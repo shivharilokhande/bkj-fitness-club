@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BKJ Fitness Club - Biggest Gym in Hinjawadi with Expert Trainers & Classes. Women-owned fitness center offering personal training, group classes, yoga, Zumba. Rated 4.9/5 stars.">
+    <meta name="keywords" content="Biggest Gym in Hinjawadi, Expert Trainers, Fitness Classes, BKJ Fitness Club, Gym Hinjawadi, Personal Training, Yoga Classes, Zumba">
+    <title>BKJ Fitness Club - Biggest Gym in Hinjawadi with Expert Trainers & Classes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #e31e24;
+            --dark-bg: #0a0a0a;
+            --light-bg: #1a1a1a;
+            --neon-accent: #00ff88;
+            --text-white: #ffffff;
+            --text-gray: #cccccc;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(227, 30, 36, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .lang-toggle {
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: fadeInUp 1s;
+        }
+
+        .hero-content .tagline-marathi {
+            font-size: 1.5rem;
+            color: var(--neon-accent);
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .rating {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            color: #ffd700;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary-red);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #c41a1f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(227, 30, 36, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--neon-accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--neon-accent);
+            color: var(--dark-bg);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .women-owned-badge {
+            display: inline-block;
+            background: var(--neon-accent);
+            color: var(--dark-bg);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-red);
+            box-shadow: 0 10px 30px rgba(227, 30, 36, 0.3);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            margin: 1rem 0;
+            font-size: 1.5rem;
+        }
+
+        /* Trainers Section */
+        .trainers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .trainer-card {
+            background: var(--light-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .trainer-card:hover {
+            transform: scale(1.05);
+        }
+
+        .trainer-img {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--primary-red), var(--neon-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .trainer-info {
+            padding: 1.5rem;
+        }
+
+        .trainer-info h3 {
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Testimonials */
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary-red);
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-stars {
+            color: #ffd700;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            color: var(--neon-accent);
+            font-weight: bold;
+        }
+
+        /* Membership Plans */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .plan-card {
+            background: var(--light-bg);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .plan-card:hover {
+            border-color: var(--primary-red);
+            transform: translateY(-10px);
+        }
+
+        .plan-card.featured {
+            border-color: var(--neon-accent);
+            background: linear-gradient(135deg, rgba(227, 30, 36, 0.1), rgba(0, 255, 136, 0.1));
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            color: var(--primary-red);
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .plan-features li:before {
+            content: "✓ ";
+            color: var(--neon-accent);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            background: var(--light-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            color: var(--primary-red);
+            font-size: 1.5rem;
+        }
+
+        .contact-form {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--dark-bg);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-red);
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
+            cursor: pointer;
+            z-index: 999;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--light-bg);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 3px solid var(--primary-red);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-red);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 5%;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .marathi-content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">BKJ FITNESS</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#trainers">Trainers</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#membership">Membership</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="lang-toggle" onclick="toggleLanguage()">मराठी</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="english-content">BKJ FITNESS CLUB<br>Biggest Gym in Hinjawadi</h1>
+            <h1 class="marathi-content">बीकेजे फिटनेस क्लब<br>हिंजवडीतील सर्वात मोठी जिम</h1>
+            <p class="english-content" style="font-size: 1.5rem; color: var(--neon-accent);">Expert Trainers & Premium Classes</p>
+            <p class="marathi-content tagline-marathi">तज्ञ प्रशिक्षक आणि प्रीमियम क्लासेस</p>
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ 4.9 (159 Reviews)
+            </div>
+            <div class="cta-buttons">
+                <a href="#membership" class="btn btn-primary english-content">Join Now</a>
+                <a href="#membership" class="btn btn-primary marathi-content">आता सामील व्हा</a>
+                <a href="#contact" class="btn btn-secondary english-content">Book Free Trial</a>
+                <a href="#contact" class="btn btn-secondary marathi-content">मोफत ट्रायल बुक करा</a>
+                <a href="tel:07218088088" class="btn btn-secondary">📞 072180 88088</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title english-content">About BKJ Fitness Club</h2>
+        <h2 class="section-title marathi-content">बीकेजे फिटनेस क्लब बद्दल</h2>
+        <div class="about-content">
+            <div class="about-text english-content">
+                <span class="women-owned-badge">👩 Women-Owned Business</span>
+                <h3 style="margin: 1rem 0; font-size: 2rem;">Your Fitness Journey Starts Here</h3>
+                <p>Welcome to BKJ Fitness Club, Hinjawadi's largest and most comprehensive fitness center. We are proud to be a women-owned business dedicated to empowering individuals on their fitness journeys.</p>
+                <p>With state-of-the-art equipment, expert trainers, and a vibrant community, we provide everything you need to achieve your fitness goals. From beginners to advanced athletes, our personalized approach ensures everyone gets the support they deserve.</p>
+                <p><strong>Our Mission:</strong> To create a welcoming, motivating environment where every member can transform their health and wellness through expert guidance, premium facilities, and unwavering support.</p>
+            </div>
+            <div class="about-text marathi-content">
+                <span class="women-owned-badge">👩 महिला-मालकीचा व्यवसाय</span>
+                <h3 style="margin: 1rem 0; font-size: 2rem;">तुमचा फिटनेस प्रवास येथे सुरू होतो</h3>
+                <p>बीकेजे फिटनेस क्लबमध्ये आपले स्वागत आहे, हिंजवडीचे सर्वात मोठे आणि सर्वसमावेशक फिटनेस सेंटर. आम्ही एक महिला-मालकीचा व्यवसाय असल्याचा अभिमान बाळगतो जो व्यक्तींना त्यांच्या फिटनेस प्रवासात सशक्त करण्यासाठी समर्पित आहे.</p>
+                <p>अत्याधुनिक उपकरणे, तज्ञ प्रशिक्षक आणि एक जीवंत समुदायासह, आम्ही तुमच्या फिटनेस उद्दिष्टे साध्य करण्यासाठी आवश्यक असलेली प्रत्येक गोष्ट प्रदान करतो.</p>
+                <p><strong>आमचे ध्येय:</strong> एक स्वागतार्ह, प्रेरक वातावरण तयार करणे जेथे प्रत्येक सदस्य तज्ञ मार्गदर्शन, प्रीमियम सुविधा आणि अटूट समर्थनाद्वारे त्यांचे आरोग्य आणि कल्याण बदलू शकतो.</p>
+            </div>
+            <div style="background: linear-gradient(135deg, var(--primary-red), var(--neon-accent)); height: 400px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 5rem;">
+                🏋️‍♀️
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2 class="section-title english-content">Our Services & Classes</h2>
+        <h2 class="section-title marathi-content">आमच्या सेवा आणि क्लासेस</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💪</div>
+                <h3 class="english-content">Personal Training</h3>
+                <h3 class="marathi-content">वैयक्तिक प्रशिक्षण</h3>
+                <p class="english-content">One-on-one sessions with certified trainers tailored to your goals</p>
+                <p class="marathi-content">तुमच्या उद्दिष्टांनुसार प्रमाणित प्रशिक्षकांसह वन-ऑन-वन सत्रे</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🧘‍♀️</div>
+                <h3 class="english-content">Yoga Classes</h3>
+                <h3 class="marathi-content">योग क्लासेस</h3>
+                <p class="english-content">Improve flexibility, balance, and mental wellness</p>
+                <p class="marathi-content">लवचिकता, संतुलन आणि मानसिक आरोग्य सुधारा</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💃</div>
+                <h3 class="english-content">Zumba</h3>
+                <h3 class="marathi-content">झुंबा</h3>
+                <p class="english-content">High-energy dance fitness for all levels</p>
+                <p class="marathi-content">सर्व स्तरांसाठी उच्च-ऊर्जा नृत्य फिटनेस</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏋️</div>
+                <h3 class="english-content">Strength Training</h3>
+                <h3 class="marathi-content">शक्ती प्रशिक्षण</h3>
+                <p class="english-content">Build muscle and increase power with expert guidance</p>
+                <p class="marathi-content">तज्ञ मार्गदर्शनासह स्नायू तयार करा आणि शक्ती वाढवा</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏃‍♂️</div>
+                <h3 class="english-content">Cardio Training</h3>
+                <h3 class="marathi-content">कार्डिओ प्रशिक्षण</h3>
+                <p class="english-content">Boost endurance and burn calories effectively</p>
+                <p class="marathi-content">सहनशक्ती वाढवा आणि कॅलरी प्रभावीपणे जाळा</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">👥</div>
+                <h3 class="english-content">Group Classes</h3>
+                <h3 class="marathi-content">गट क्लासेस</h3>
+                <p class="english-content">Motivating group sessions for community fitness</p>
+                <p class="marathi-content">समुदाय फिटनेससाठी प्रेरक गट सत्रे</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainers Section -->
+    <section id="trainers">
+        <h2 class="section-title english-content">Meet Our Expert Trainers</h2>
+        <h2 class="section-title marathi-content">आमच्या तज्ञ प्रशिक्षकांना भेटा</h2>
+        <div class="trainers-grid">
+            <div class="trainer-card">
+                <div class="trainer-img">👨‍🏫</div>
+                <div class="trainer-info">
+                    <h3 class="english-content">Certified Personal Trainer</h3>
+                    <h3 class="marathi-content">प्रमाणित वैयक्तिक प्रशिक्षक</h3>
+                    <p class="english-content"><strong>Specialties:</strong> Strength Training, Weight Loss</p>
+                    <p class="marathi-content"><strong>विशेषता:</strong> शक्ती प्रशिक्षण, वजन कमी करणे</p>
+                    <p class="english-content" style="font-style: italic; margin-top: 1rem;">"Motivating and results-driven approach"</p>
+                    <p class="marathi-content" style="font-style: italic; margin-top: 1rem;">"प्रेरक आणि परिणाम-चालित दृष्टीकोन"</p>
+                </div>
+            </div>
+            <div class="trainer-card">
+                <div class="trainer-img">👩‍🏫</div>
+                <div class="trainer-info">
+                    <h3 class="english-content">Yoga & Wellness Expert</h3>
+                    <h3 class="marathi-content">योग आणि कल्याण तज्ञ</h3>
+                    <p class="english-content"><strong>Specialties:</strong> Yoga, Meditation, Flexibility</p>
+                    <p class="marathi-content"><strong>विशेषता:</strong> योग, ध्यान, लवचिकता</p>
+                    <p class="english-content" style="font-style: italic; margin-top: 1rem;">"Holistic approach to fitness and wellness"</p>
+                    <p class="marathi-content" style="font-style: italic; margin-top: 1rem;">"फिटनेस आणि कल्याणासाठी समग्र दृष्टीकोन"</p>
+                </div>
+            </div>
+            <div class="trainer-card">
+                <div class="trainer-img">🏋️‍♂️</div>
+                <div class="trainer-info">
+                    <h3 class="english-content">Fitness & Nutrition Coach</h3>
+                    <h3 class="marathi-content">फिटनेस आणि पोषण प्रशिक्षक</h3>
+                    <p class="english-content"><strong>Specialties:</strong> Nutrition, Body Building</p>
+                    <p class="marathi-content"><strong>विशेषता:</strong> पोषण, शरीर बांधणी</p>
+                    <p class="english-content" style="font-style: italic; margin-top: 1rem;">"Complete transformation specialist"</p>
+                    <p class="marathi-content" style="font-style: italic; margin-top: 1rem;">"संपूर्ण परिवर्तन तज्ञ"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <h2 class="section-title english-content">What Our Members Say</h2>
+        <h2 class="section-title marathi-content">आमचे सदस्य काय म्हणतात</h2>
+        <div class="testimonials-slider">
+            <div class="testimonial">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text english-content">"Friendly trainers who motivate every step. The best gym experience I've had in Hinjawadi!"</p>
+                <p class="testimonial-text marathi-content">"मैत्रीपूर्ण प्रशिक्षक जे प्रत्येक पायरीला प्रेरित करतात. हिंजवडीतील माझा सर्वोत्तम जिम अनुभव!"</p>
+                <p class="testimonial-author">- Priya S.</p>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text english-content">"Best-equipped gym in Hinjawadi. The variety of equipment and classes is amazing!"</p>
+                <p class="testimonial-text marathi-content">"हिंजवडीतील सर्वोत्तम सुसज्ज जिम. उपकरणे आणि क्लासेसची विविधता आश्चर्यकारक आहे!"</p>
+                <p class="testimonial-author">- Rahul M.</p>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text english-content">"Clean environment and energetic vibe. I look forward to my workouts every day!"</p>
+                <p class="testimonial-text marathi-content">"स्वच्छ वातावरण आणि ऊर्जावान वातावरण. मी दररोज माझ्या वर्कआउटची वाट पाहतो!"</p>
+                <p class="testimonial-author">- Sneha K.</p>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text english-content">"Affordable membership with great value. The trainers are knowledgeable and supportive!"</p>
+                <p class="testimonial-text marathi-content">"उत्तम मूल्यासह परवडणारे सदस्यत्व. प्रशिक्षक जाणकार आणि सहाय्यक आहेत!"</p>
+                <p class="testimonial-author">- Amit P.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section id="membership">
+        <h2 class="section-title english-content">Membership Plans</h2>
+        <h2 class="section-title marathi-content">सदस्यत्व योजना</h2>
+        <div class="plans-grid">
+            <div class="plan-card">
+                <h3 class="english-content">Monthly</h3>
+                <h3 class="marathi-content">मासिक</h3>
+                <div class="plan-price">₹2,999</div>
+                <ul class="plan-features">
+                    <li class="english-content">Full gym access</li>
+                    <li class="marathi-content">संपूर्ण जिम प्रवेश</li>
+                    <li class="english-content">Group classes</li>
+                    <li class="marathi-content">गट क्लासेस</li>
+                    <li class="english-content">Locker facility</li>
+                    <li class="marathi-content">लॉकर सुविधा</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary english-content">Get Started</a>
+                <a href="#contact" class="btn btn-primary marathi-content">सुरू करा</a>
+            </div>
+            <div class="plan-card featured">
+                <h3 class="english-content">Quarterly</h3>
+                <h3 class="marathi-content">तिमाही</h3>
+                <div class="plan-price">₹7,999</div>
+                <p style="color: var(--neon-accent); font-weight: bold;" class="english-content">MOST POPULAR</p>
+                <p style="color: var(--neon-accent); font-weight: bold;" class="marathi-content">सर्वाधिक लोकप्रिय</p>
+                <ul class="plan-features">
+                    <li class="english-content">Everything in Monthly</li>
+                    <li class="marathi-content">मासिकातील सर्वकाही</li>
+                    <li class="english-content">2 Personal training sessions</li>
+                    <li class="marathi-content">2 वैयक्तिक प्रशिक्षण सत्रे</li>
+                    <li class="english-content">Nutrition consultation</li>
+                    <li class="marathi-content">पोषण सल्ला</li>
+                    <li class="english-content">Save ₹1,000</li>
+                    <li class="marathi-content">₹1,000 वाचवा</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary english-content">Get Started</a>
+                <a href="#contact" class="btn btn-primary marathi-content">सुरू करा</a>
+            </div>
+            <div class="plan-card">
+                <h3 class="english-content">Yearly</h3>
+                <h3 class="marathi-content">वार्षिक</h3>
+                <div class="plan-price">₹24,999</div>
+                <p style="color: var(--primary-red); font-weight: bold;" class="english-content">BEST VALUE</p>
+                <p style="color: var(--primary-red); font-weight: bold;" class="marathi-content">सर्वोत्तम मूल्य</p>
+                <ul class="plan-features">
+                    <li class="english-content">Everything in Quarterly</li>
+                    <li class="marathi-content">तिमाहीतील सर्वकाही</li>
+                    <li class="english-content">8 Personal training sessions</li>
+                    <li class="marathi-content">8 वैयक्तिक प्रशिक्षण सत्रे</li>
+                    <li class="english-content">Monthly body analysis</li>
+                    <li class="marathi-content">मासिक शरीर विश्लेषण</li>
+                    <li class="english-content">Save ₹10,000</li>
+                    <li class="marathi-content">₹10,000 वाचवा</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary english-content">Get Started</a>
+                <a href="#contact" class="btn btn-primary marathi-content">सुरू करा</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2 class="section-title english-content">Our Facility</h2>
+        <h2 class="section-title marathi-content">आमची सुविधा</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=600" alt="Gym Equipment">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600" alt="Training Area">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600" alt="Cardio Zone">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600" alt="Yoga Studio">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600" alt="Group Class">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600" alt="Fitness Training">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title english-content">Get In Touch</h2>
+        <h2 class="section-title marathi-content">संपर्कात रहा</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3 class="english-content" style="font-size: 2rem; margin-bottom: 2rem;">Visit Us</h3>
+                <h3 class="marathi-content" style="font-size: 2rem; margin-bottom: 2rem;">आम्हाला भेट द्या</h3>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong class="english-content">Address:</strong>
+                        <strong class="marathi-content">पत्ता:</strong>
+                        <p>Hinjawadi Phase 1 Rd, Rajiv Gandhi Infotech Park,<br>Pimpri-Chinchwad, Maharashtra 411057</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <strong class="english-content">Phone:</strong>
+                        <strong class="marathi-content">फोन:</strong>
+                        <p><a href="tel:07218088088" style="color: var(--neon-accent); text-decoration: none;">072180 88088</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong class="english-content">Hours:</strong>
+                        <strong class="marathi-content">वेळ:</strong>
+                        <p class="english-content">Mon-Sat: 6:00 AM - 10:30 PM<br>Sunday: Closed</p>
+                        <p class="marathi-content">सोम-शनि: सकाळी 6:00 - रात्री 10:30<br>रविवार: बंद</p>
+                    </div>
+                </div>
+                <div style="margin-top: 2rem;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.0234567890123!2d73.7234567890123!3d18.5912345678901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDM1JzI4LjQiTiA3M8KwNDMnMjQuNCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin" width="100%" height="250" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3 class="english-content" style="font-size: 2rem; margin-bottom: 2rem;">Book Your Free Trial</h3>
+                <h3 class="marathi-content" style="font-size: 2rem; margin-bottom: 2rem;">तुमचा मोफत ट्रायल बुक करा</h3>
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name / तुमचे नाव" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email / ईमेल" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Phone / फोन" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" placeholder="Message / संदेश"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <span class="english-content">Send Message</span>
+                        <span class="marathi-content">संदेश पाठवा</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p class="english-content">&copy; 2025 BKJ Fitness Club. All Rights Reserved. | Women-Owned Business</p>
+        <p class="marathi-content">&copy; 2025 बीकेजे फिटनेस क्लब. सर्व हक्क राखीव. | महिला-मालकीचा व्यवसाय</p>
+        <p style="margin-top: 1rem; color: var(--text-gray);">
+            <span class="english-content">Biggest Gym in Hinjawadi | Expert Trainers | Premium Classes</span>
+            <span class="marathi-content">हिंजवडीतील सर्वात मोठी जिम | तज्ञ प्रशिक्षक | प्रीमियम क्लासेस</span>
+        </p>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/917218088088" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        let isMarathi = false;
+
+        function toggleLanguage() {
+            isMarathi = !isMarathi;
+            const englishElements = document.querySelectorAll('.english-content');
+            const marathiElements = document.querySelectorAll('.marathi-content');
+            const langButton = document.querySelector('.lang-toggle');
+
+            if (isMarathi) {
+                englishElements.forEach(el => el.style.display = 'none');
+                marathiElements.forEach(el => el.style.display = 'block');
+                langButton.textContent = 'English';
+            } else {
+                englishElements.forEach(el => el.style.display = 'block');
+                marathiElements.forEach(el => el.style.display = 'none');
+                langButton.textContent = 'मराठी';
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert(isMarathi ? 'धन्यवाद! आम्ही लवकरच तुमच्याशी संपर्क साधू.' : 'Thank you! We will contact you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
